@@ -109,22 +109,14 @@ pre{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:1.15rem;line-hei
 <h3 id="w3" class="am" style="text-align:center">BIG + COMPLEX: 1 problem of 16 pieces</h3>
 <p class="mu" style="text-align:center">The goal is not to make more problems. The goal is to make one difficult problem easier to manage.</p></section>
 
-<section class="slide" aria-label="Slide 4"><h2>LeetCode 704: Binary Search</h2><p class="mu" style="font-size:1.3rem">Sorted nums = [-1, 0, 3, 5, 9, 12], target = 9. Return its index, or -1. Expected: 4</p><div id="bsGate"><p style="font-size:1.6rem;margin-bottom:.6rem">How would you find 9?</p><div class="row"><button data-g="A">A: Check every element</button><button data-g="B">B: Use the sorted order</button></div><p class="cap" id="gMsg"></p></div>
-<div id="bsBody" class="stack gone"><div class="tree bs" id="bsT"></div><p class="mu" style="font-size:1.1rem">L = left end, M = middle, R = right end. Each Next Step grows the tree downward.</p>
-<div class="cap" id="bsCap"></div>
-<div class="row"><button id="bsB">← Previous</button><button id="bsN" class="pri">▶ Next Step</button><button id="bsA">▶ Auto Run</button><button id="bsR">↺ Restart</button>
-<span class="mu" id="bsS" style="margin-left:1rem"></span></div>
-</div></section>
 
-<section class="slide" aria-label="LeetCode 704 code"><h2>704: the code, line by line</h2><div class="cols"><pre class="cp" data-code="704"></pre><div><div class="row"><button data-c="m">mid</button><button data-c="f">== target</button><button data-c="c">&lt; target</button><button data-c="u">left = mid + 1</button></div><div class="card viz" style="margin:1rem 0">Pick a line to see what it does.</div><div class="card"><div class="row"><span class="chip">6 elements</span>↓<span class="chip">3</span>↓<span class="chip">1</span></div><p style="margin-top:.6rem">Time <b class="am">O(log n)</b> &nbsp; Space <b class="am">O(1)</b></p><p class="mu">Every step removes about half of the remaining elements.</p></div></div></div></section>
-<section class="slide" aria-label="Merge sort demo"><h2>Merge Sort on 8 numbers</h2><div class="ms" data-arr="8,3,5,4,7,6,1,2"></div></section>
-<section class="slide" aria-label="LeetCode 912"><p class="sub">LeetCode 912: Sort an Array</p><h2>[5, 2, 3, 1] → [1, 2, 3, 5]</h2><p class="mu" style="font-size:1.4rem">How can we sort this using Divide &amp; Conquer? Press Next and watch.</p><div class="ms" data-arr="5,2,3,1"></div></section>
-<section class="slide" aria-label="Your turn"><h2>Your turn: merge [2, 5] and [1, 3]</h2><div id="game" class="stack"></div></section>
-
-<section class="slide" aria-label="LeetCode 912 code"><h2>912: code ↔ Divide, Conquer, Combine</h2><div class="cols"><div><pre class="cp" data-code="912"></pre><button id="mgT" style="margin-top:.6rem">Show merge()</button></div><div><div class="row"><button data-c="d">DIVIDE</button><button data-c="s">CONQUER</button><button data-c="m">COMBINE</button></div><div class="card viz" style="margin:1rem 0">Pick a stage to light up its code.</div><div class="card"><div class="row"><span class="chip">log n levels</span>×<span class="chip">n work per level</span>=<span class="chip am">O(n log n)</span></div><p style="margin-top:.6rem">Space <b class="am">O(n)</b></p><p class="mu">The array splits for about log n levels, and each level processes about n elements.</p></div></div></div></section>
 <section class="slide" aria-label="LeetCode 53"><h2>LeetCode 53: Maximum Subarray</h2><p class="mu" style="font-size:1.2rem">nums = [-2, 1, -3, 4, -1, 2, 1, -5]. Biggest continuous sum = 6 (4, -1, 2, 1). It sits in the left half, the right half, or crosses the middle.</p><div class="ms" data-arr="-2,1,-3,4,-1,2,1,-5" data-alg="max"></div></section>
 <section class="slide" aria-label="LeetCode 53 code"><h2>53: code ↔ Divide, Conquer, Combine</h2><div class="cols"><div><pre class="cp" data-code="53"></pre><button id="cxT" style="margin-top:.6rem">Show crossing()</button></div><div><div class="row"><button data-c="d">DIVIDE</button><button data-c="s">CONQUER</button><button data-c="m">COMBINE</button></div><div class="card viz" style="margin:1rem 0">Pick a stage to light up its code.</div><div class="card"><div class="row"><span class="chip">log n levels</span>×<span class="chip">n work per level</span>=<span class="chip am">O(n log n)</span></div><p style="margin-top:.6rem">Space <b class="am">O(log n)</b></p><p class="mu">A faster O(n) trick exists, but this shows divide and conquer.</p></div></div></div></section>
-<section class="slide" aria-label="Comparison"><h2>Two problems, one idea</h2><table><tr><th></th><th>Binary Search</th><th>Merge Sort</th><th>Max Subarray</th></tr><tr><td>LeetCode</td><td>704</td><td>912</td><td>53</td></tr><tr><td>Purpose</td><td>Search</td><td>Sort</td><td>Best sum</td></tr><tr><td>Main idea</td><td>Remove half</td><td>Divide + merge</td><td>Left, right or crossing</td></tr><tr><td>Time</td><td>O(log n)</td><td>O(n log n)</td><td>O(n log n)</td></tr><tr><td>Divide</td><td>Search space</td><td>Array</td><td>Array</td></tr><tr><td>Combine</td><td>Not required in the same way</td><td>Required</td><td>Take the max of three</td></tr></table><div class="row"><button id="cmpB" class="pri">What is common between these two problems?</button></div><h3 id="cmpA" class="te"></h3><p class="mu" style="font-size:1.15rem">Note: Binary Search is a simpler variant (sometimes called decrease and conquer). It splits the problem but keeps only one half, so there is nothing to combine.</p></section>
+
+<section class="slide" aria-label="Merge sort demo"><h2>Merge Sort on 8 numbers</h2><div class="ms" data-arr="8,3,5,4,7,6,1,2"></div></section>
+<section class="slide" aria-label="LeetCode 912 code"><h2>912: code ↔ Divide, Conquer, Combine</h2><div class="cols"><div><pre class="cp" data-code="912"></pre><button id="mgT" style="margin-top:.6rem">Show merge()</button></div><div><div class="row"><button data-c="d">DIVIDE</button><button data-c="s">CONQUER</button><button data-c="m">COMBINE</button></div><div class="card viz" style="margin:1rem 0">Pick a stage to light up its code.</div><div class="card"><div class="row"><span class="chip">log n levels</span>×<span class="chip">n work per level</span>=<span class="chip am">O(n log n)</span></div><p style="margin-top:.6rem">Space <b class="am">O(n)</b></p><p class="mu">The array splits for about log n levels, and each level processes about n elements.</p></div></div></div></section>
+
+<section class="slide" aria-label="Comparison"><h2>Two problems, one idea</h2><table><tr><th></th><th>Merge Sort</th><th>Max Subarray</th></tr><tr><td>LeetCode</td><td>912</td><td>53</td></tr><tr><td>Purpose</td><td>Sort</td><td>Best sum</td></tr><tr><td>Main idea</td><td>Divide + merge</td><td>Left, right or crossing</td></tr><tr><td>Time</td><td>O(n log n)</td><td>O(n log n)</td></tr><tr><td>Divide</td><td>Array</td><td>Array</td></tr><tr><td>Combine</td><td>Merge two sorted halves</td><td>Take the max of three</td></tr></table><div class="row"><button id="cmpB" class="pri">What is common between these two problems?</button></div><h3 id="cmpA" class="te"></h3></section>
 
 </main>
 
@@ -137,18 +129,17 @@ const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelecto
 const wait=ms=>new Promise(r=>setTimeout(r,ms));
 
 // ===== Presentation Navigation =====
+// One note per slide, in slide order:
+// 1 hook, 2 three steps, 3 why, 4 LeetCode 53 demo, 5 LeetCode 53 code, 6 merge sort demo, 7 LeetCode 912 code, 8 comparison
 const slides=$$('.slide'),NOTES=[
 ["Imagine you have a 1000-piece puzzle. Would you solve all 1000 pieces at once?","Click TRY EVERYTHING, then BREAK IT DOWN to compare.","What would you do?","Break the big problem into smaller problems."],
 ["Three words: divide, conquer, combine.","Click each card to light up its part of the diagram.","Which step do you think is hardest?","DIVIDE → CONQUER → COMBINE."],
 ["Toggle between the two approaches.","Same problem, but the second one is made of small, easy parts.","Why is a small problem easier?","Smaller problems are easier to manage."],
-["We search a sorted list by checking the middle and throwing half away.","Step through: 3 < 9, so the left half is gone.","How many steps for 1,000,000 items?","Half disappears each step: O(log n)."],
+["LeetCode 53: biggest sum of a continuous part.","Press DIVIDE, then COMBINE. Amber cells show the crossing part.","Where can the best part be?","Left half, right half, or crossing the middle."],
+["Same three steps in code.","Click DIVIDE, CONQUER, COMBINE, then Show crossing().","Why do we need the crossing case?","best = max(left, right, crossing): O(n log n)."],
 ["This is the hero example. First we split down to single items, then merge back sorted.","Press Play, or step with Next. Pause anytime.","Why is one element already sorted?","Divide until trivial, then combine in order."],
-["The code has the same three parts we just watched.","Click DIVIDE, STOP CONDITION, COMBINE.","Where does the recursion stop?","Code = algorithm = picture."],
-["Let the class answer the quiz.","Four questions, then the algorithm cards.","Which algorithm have you used before?","Don't solve the whole problem at once. Break it down."]];
-NOTES.splice(4,0,["Now the code for 704. Click each line.","Each button lights up a line and explains it.","Which line throws away half the array?","mid, compare, move left or right: O(log n)."]);
-NOTES.splice(6,0,["LeetCode 912: sort [5,2,3,1].","Press Next. Watch the tracker: divide, conquer, combine.","How could we sort this using divide and conquer?","Split to single items, then merge back sorted."],["Let the class do the merge.","Click the number that should go first.","Why is 1 first, not 2?","Combine means picking the smaller front number."]);
-NOTES.splice(9,0,["Compare the two problems.","Click the question to reveal the answer.","What is common between them?","Both reduce a large problem into smaller problems."]);
-NOTES.splice(9,0,["LeetCode 53: biggest sum of a continuous part.","Press DIVIDE, then COMBINE. Amber cells show the crossing part.","Where can the best part be?","Left half, right half, or crossing the middle."],["Same three steps in code.","Click DIVIDE, CONQUER, COMBINE, then Show crossing().","Why do we need the crossing case?","best = max(left, right, crossing): O(n log n)."]);
+["The merge sort code has the same three parts we just watched.","Click DIVIDE, CONQUER, COMBINE, then Show merge().","Where does the recursion stop?","Code = algorithm = picture."],
+["Compare the two problems.","Click the question to reveal the answer.","What is common between them?","Both reduce a large problem into smaller problems."]];
 let cur=0,lock=false;
 const dots=$('#dots');slides.forEach((_,i)=>{const b=document.createElement('button');b.setAttribute('aria-label','Go to slide '+(i+1));b.onclick=()=>go(i);dots.append(b)});
 function go(i){cur=Math.max(0,Math.min(slides.length-1,i));$('#deck').style.transform=`translateY(${-cur*100}vh)`;
@@ -161,7 +152,7 @@ $('#prev').onclick=()=>go(cur-1);$('#next').onclick=()=>go(cur+1);
 // ===== Keyboard Controls =====
 addEventListener('keydown',e=>{const k=e.key;
  if(k==='ArrowDown'||k==='PageDown'){e.preventDefault();go(cur+1)}else if(k==='ArrowUp'||k==='PageUp'){e.preventDefault();go(cur-1)}
- else if(k==='ArrowRight')go(cur+1);else if(k==='ArrowLeft')go(cur-1);else if(k==='n'||k==='N'){const r=slides[cur].querySelector('.ms');if(r)$('.nx',r).click();else if(cur===3)$('#bsN').click()}else if(k==='b'||k==='B'){const r=slides[cur].querySelector('.ms');if(r)$('.pv',r).click();else if(cur===3)$('#bsB').click()}else if(k==='Home')go(0);else if(k==='End')go(slides.length-1);else if(k==='f'||k==='F')toggleFS();else if(k==='p'||k==='P')$('#notes').classList.toggle('show');});
+ else if(k==='ArrowRight')go(cur+1);else if(k==='ArrowLeft')go(cur-1);else if(k==='n'||k==='N'){const r=slides[cur].querySelector('.ms');if(r)$('.nx',r).click();}else if(k==='b'||k==='B'){const r=slides[cur].querySelector('.ms');if(r)$('.pv',r).click();}else if(k==='Home')go(0);else if(k==='End')go(slides.length-1);else if(k==='f'||k==='F')toggleFS();else if(k==='p'||k==='P')$('#notes').classList.toggle('show');});
 addEventListener('wheel',e=>{if(lock||Math.abs(e.deltaY)<20)return;lock=true;go(cur+Math.sign(e.deltaY));setTimeout(()=>lock=false,800)},{passive:true});
 let ty=0;addEventListener('touchstart',e=>ty=e.touches[0].clientY);addEventListener('touchend',e=>{const d=ty-e.changedTouches[0].clientY;if(Math.abs(d)>60)go(cur+Math.sign(d))});
 
@@ -189,24 +180,7 @@ const bl=$('#blobs');bl.innerHTML=Array.from({length:4},()=>`<div class="grp">${
 function mode(dc){bl.classList.toggle('dc',dc);$('#t1').classList.toggle('on',!dc);$('#t2').classList.toggle('on',dc);$('#w3').textContent=dc?'SMALL + MANAGEABLE: 4 problems of 4 pieces':'BIG + COMPLEX: 1 problem of 16 pieces';$('#w3').className=dc?'te':'am'}
 $('#t1').onclick=()=>mode(false);$('#t2').onclick=()=>mode(true);
 
-// ===== Binary Search Visualization =====
-const BA=[-1,0,3,5,9,12],BN=(a,c,m=-1,l=-1,r=-1,f=0)=>({a,c,m,l,r,f}),CUT=()=>BN([-1,0,3],'cut');
-$('#bsGate').closest('.slide').classList.add('tight');
-const BS=[
-{rows:[[BN(BA,'on',2,0,5)]],L:0,R:5,M:2,t:'Middle is 3. Is 3 the target 9?',s:'6 elements'},
-{rows:[[BN(BA,'on',2,0,5)],[CUT(),BN([5,9,12],'on')]],L:0,R:5,M:2,t:'3 < 9, so 9 must be on the right. Drop the left half.',s:'6 → 3 elements'},
-{rows:[[BN(BA,'past',2)],[CUT(),BN([5,9,12],'on',1,0,2)]],L:3,R:5,M:4,t:'Middle is 9. 9 == 9',s:'6 → 3 → 1 element'},
-{rows:[[BN(BA,'past',2)],[CUT(),BN([5,9,12],'on',1,0,2,1)]],L:3,R:5,M:4,t:'FOUND! 9 is at index 4.',s:'6 → 3 → 1 element',f:1}];
-let bi=0,bTimer=null;
-function renderBS(){const s=BS[bi],t=$('#bsT');t.classList.toggle('dv',bi===1);
- t.innerHTML=s.rows.map((row,d)=>`<div class="tr">${row.map(n=>`<div class="slot"><div class="tn ${n.c} ${d+1<s.rows.length?'par':''}">${n.a.map((v,j)=>`<span class="col"><span class="cell ${j===n.m?(n.f?'fnd':'mid'):''}">${v}</span><span class="ptr">${[j===n.l?'L':'',j===n.m&&n.c==='on'?'M':'',j===n.r?'R':''].filter(Boolean).join('/')}</span></span>`).join('')}</div></div>`).join('')}</div>`).join('');
- $('#bsCap').textContent=s.t+'   (L='+s.L+', M='+s.M+', R='+s.R+')';$('#bsCap').style.color=s.f?'var(--te)':'';
- $('#bsS').textContent='STEP '+(bi+1)+' / 4, search space: '+s.s;$('#bsN').textContent=bi===BS.length-1?'↺ Restart':'▶ Next Step';}
-function bsNext(){if(bi<BS.length-1){bi++;renderBS()}else stopBS()}
-function stopBS(){clearInterval(bTimer);bTimer=null;$('#bsA').textContent='▶ Auto Run'}
-$('#bsN').onclick=()=>{stopBS();if(bi===BS.length-1){bi=0;renderBS()}else bsNext()};$('#bsB').onclick=()=>{stopBS();if(bi>0){bi--;renderBS()}};$('#bsR').onclick=()=>{stopBS();bi=0;renderBS()};
-$('#bsA').onclick=()=>{if(bTimer)return stopBS();if(bi===BS.length-1)bi=0;renderBS();$('#bsA').textContent='⏸ Pause';bTimer=setInterval(bsNext,1400)};
-renderBS();
+
 
 // ===== Merge Sort Visualization: tree (power-of-two arrays) =====
 function buildMS(arr){const lv=[[arr.slice()]];
@@ -247,23 +221,14 @@ function sorter(root,arr,build=buildMS){const S=build(arr),ms={i:0,timer:null,sp
  $$('[data-sp]',root).forEach(b=>b.onclick=()=>{ms.sp=+b.dataset.sp;$$('[data-sp]',root).forEach(x=>x.classList.toggle('on',x===b))});render()}
 $$('.ms').forEach(r=>{r.closest('.slide').classList.add('tight');sorter(r,r.dataset.arr.split(',').map(Number),r.dataset.alg==='max'?buildMax:buildMS)});
 
-// ===== Merge game (LeetCode 912 combine) =====
-(function(){const root=$('#game');let L,R,o;
- const cs=(a,h)=>a.map((v,i)=>`<span class="cell ${h&&i===0?'hl':''}">${v}</span>`).join('')||'<span class="cell" style="opacity:.3">–</span>';
- const row=(l,a,h,c='mu')=>`<div class="row"><b class="${c}" style="width:6rem">${l}</b><div class="cells">${cs(a,h)}</div></div>`;
- function draw(msg,good){root.innerHTML=row('LEFT',L,1)+row('RIGHT',R,1)+row('RESULT',o,0,'am')+`<div class="cap ${good?'te':''}">${msg}</div><div class="row">${L.length&&R.length?`<button class="pri" data-v="L">${L[0]}</button><button class="pri" data-v="R">${R[0]}</button>`:''}<button id="gR">↺ Restart</button></div>`;
-  $$('[data-v]',root).forEach(b=>b.onclick=()=>{const l=b.dataset.v==='L';if(l?L[0]<=R[0]:R[0]<L[0]){const v=l?L.shift():R.shift();o.push(v);if(!L.length||!R.length){o.push(...L,...R);L=[];R=[];draw('Sorted: ['+o.join(', ')+']. That was COMBINE.',1)}else draw(v+' is smaller, so it goes first. Which is next?',1)}else draw('Not quite. Compare the two front numbers: the smaller goes first.')});
-  $('#gR',root).onclick=init}
- function init(){L=[2,5];R=[1,3];o=[];draw('Which number should come first?')}init()})();
 
-// ===== Code explorer (LeetCode 704 and 912) =====
+
+// ===== Code explorer (LeetCode 53 and 912) =====
 const hi=t=>t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\b(class|public|private|void|int|if|else|return|while|for|new)\b|\b([a-zA-Z]+)(?=\()/g,(m,k,f)=>k?`<span class="k">${k}</span>`:`<span class="f">${f}</span>`);
 const drawCode=(pre,ls)=>{pre.innerHTML=ls.map(([t,g])=>`<div class="ln" data-g="${g}">${hi(t)||' '}</div>`).join('')};
 const L912=[['class Solution {',''],['    public int[] sortArray(int[] nums) {',''],['        mergeSort(nums, 0, nums.length - 1);',''],['        return nums;',''],['    }',''],['    private void mergeSort(int[] nums, int left, int right) {',''],['        if (left >= right) {','s'],['            return;','s'],['        }','s'],['        int mid = left + (right - left) / 2;',''],['        mergeSort(nums, left, mid);','d'],['        mergeSort(nums, mid + 1, right);','d'],['        merge(nums, left, mid, right);','m'],['    }','']];
 const MRG=[['    private void merge(int[] nums, int left, int mid, int right) {','m'],['        int[] tmp = new int[right - left + 1];','m'],['        int i = left, j = mid + 1, k = 0;','m'],['        while (i <= mid && j <= right)','m'],['            tmp[k++] = nums[i] <= nums[j] ? nums[i++] : nums[j++];','m'],['        while (i <= mid) tmp[k++] = nums[i++];','m'],['        while (j <= right) tmp[k++] = nums[j++];','m'],['        for (k = 0; k < tmp.length; k++) nums[left + k] = tmp[k];','m'],['    }','m']];
-const CODE={704:{lines:[['class Solution {',''],['    public int search(int[] nums, int target) {',''],['        int left = 0;',''],['        int right = nums.length - 1;',''],['        while (left <= right) {',''],['            int mid = left + (right - left) / 2;','m'],['            if (nums[mid] == target) {','f'],['                return mid;','f'],['            }',''],['            if (nums[mid] < target) {','c'],['                left = mid + 1;','u'],['            } else {',''],['                right = mid - 1;','u'],['            }',''],['        }',''],['        return -1;',''],['    }',''],['}','']],
- viz:{m:'mid = 0 + (5 - 0) / 2 = 2<br>Find the middle element.',f:'nums[mid] == target<br>Found it. Return mid.',c:'3 &lt; 9<br>Target must be on the right.',u:'left = mid + 1<br>Ignore the left half.<br>(else: right = mid - 1)'}},
- 912:{lines:L912.concat([['}','']]),viz:{d:'DIVIDE<br>[5,2,3,1] → [5,2] [3,1]<br>two smaller calls',s:'CONQUER<br>calls reach [5] [2] [3] [1]<br>one element is sorted: return',m:'COMBINE<br>[2,5] + [1,3] → [1,2,3,5]'}}};
+const CODE={912:{lines:L912.concat([['}','']]),viz:{d:'DIVIDE<br>[5,2,3,1] → [5,2] [3,1]<br>two smaller calls',s:'CONQUER<br>calls reach [5] [2] [3] [1]<br>one element is sorted: return',m:'COMBINE<br>[2,5] + [1,3] → [1,2,3,5]'}}};
 const L53=[['class Solution {',''],['    public int maxSubArray(int[] nums) {',''],['        return solve(nums, 0, nums.length - 1);',''],['    }',''],['    private int solve(int[] nums, int left, int right) {',''],['        if (left == right) return nums[left];','s'],['        int mid = left + (right - left) / 2;',''],['        int leftBest = solve(nums, left, mid);','d'],['        int rightBest = solve(nums, mid + 1, right);','d'],['        int cross = crossing(nums, left, mid, right);','m'],['        return Math.max(cross, Math.max(leftBest, rightBest));','m'],['    }','']];
 const CRS=[['    private int crossing(int[] nums, int left, int mid, int right) {','m'],['        int sum = 0, leftMax = Integer.MIN_VALUE;','m'],['        for (int i = mid; i >= left; i--) {','m'],['            sum += nums[i]; leftMax = Math.max(leftMax, sum);','m'],['        }','m'],['        sum = 0; int rightMax = Integer.MIN_VALUE;','m'],['        for (int i = mid + 1; i <= right; i++) {','m'],['            sum += nums[i]; rightMax = Math.max(rightMax, sum);','m'],['        }','m'],['        return leftMax + rightMax;','m'],['    }','m']];
 CODE[53]={lines:L53.concat([['}','']]),viz:{d:'DIVIDE<br>[-2,1,-3,4 | -1,2,1,-5]<br>two smaller calls',s:'CONQUER<br>one number alone is its own best sum',m:'COMBINE<br>best = max(left, right, crossing)<br>crossing = best end of left + best start of right'}};
@@ -271,21 +236,6 @@ $$('[data-code]').forEach(pre=>{const root=pre.closest('.slide'),C=CODE[pre.data
  $$('[data-c]',root).forEach(b=>b.onclick=()=>{const k=b.dataset.c;$$('.ln',root).forEach(l=>l.classList.toggle('hl',l.dataset.g===k));$$('[data-c]',root).forEach(x=>x.classList.toggle('on',x===b));$('.viz',root).innerHTML=C.viz[k]})});
 function tog(btn,code,base,extra,name){let o=false;$(btn).onclick=()=>{o=!o;drawCode($(`[data-code="${code}"]`),o?base.concat(extra,[['}','']]):CODE[code].lines);$(btn).textContent=(o?'Hide ':'Show ')+name}}
 tog('#mgT',912,L912,MRG,'merge()');tog('#cxT',53,L53,CRS,'crossing()');
-$$('#bsGate [data-g]').forEach(b=>b.onclick=()=>{const y=b.dataset.g==='B';$('#gMsg').textContent=y?'Because the array is sorted, look at the middle and eliminate half of the search space.':'That works, but it may check all 6 items. Is there something faster?';if(y){$('#bsBody').classList.remove('gone');$$('#bsGate .row,#bsGate>p:first-child').forEach(e=>e.classList.add('gone'))}});
 $('#cmpB').onclick=()=>$('#cmpA').textContent='Both reduce a large problem into smaller problems.';
-
-// ===== Quiz =====
-const Q=[
-{q:'What should we do first?',o:['A. Combine','B. Divide','C. Stop'],a:1,ok:'Correct! We first break the problem into smaller pieces.'},
-{q:'Put the three steps in order (click them one by one).',o:['COMBINE','DIVIDE','CONQUER'],seq:['DIVIDE','CONQUER','COMBINE'],ok:'Correct! DIVIDE → CONQUER → COMBINE.'},
-{q:'[8,3,5,4] ↓ [8,3] [5,4]. Which step is this?',o:['DIVIDE','CONQUER','COMBINE'],a:0,ok:'Correct! One array became two smaller arrays.'},
-{q:'[3,8] + [4,5]. What happens next?',o:['DIVIDE','STOP','COMBINE'],a:2,ok:'Correct! We merge sorted pieces into [3,4,5,8].'},{q:'You are the algorithm: [8,3,5,4]. What should we do first?',o:['A. Compare everything','B. Divide the array','C. Return the answer'],a:1,ok:'Correct! Divide: [8,3] [5,4].'},{q:'Now we have [8,3] [5,4]. What happens next?',o:['Divide again','Combine now','Return the answer'],a:0,ok:'Correct! Keep dividing until single elements.'},{q:'Do one merge: [3,8] + [4,5]. Which number goes first?',o:['3','4','8'],a:0,ok:'Correct! 3 is smaller than 4. Next: 8 vs 4.'}];
-let qi=0,score=0;
-function renderQ(){const z=$('#quiz');if(qi>=Q.length){z.innerHTML=`<div class="big am">DIVIDE → CONQUER → COMBINE</div><p style="font-size:1.3rem">Score: ${score}/${Q.length}. Don't solve the whole problem at once. Break it down.</p><button id="qr">↺ Try again</button>`;$('#qr').onclick=()=>{qi=0;score=0;renderQ()};return}
- const q=Q[qi],picked=[];z.innerHTML=`<h3>Question ${qi+1}/${Q.length}: ${q.q}</h3><div class="opts" style="margin:.8rem 0">${q.o.map((t,i)=>`<button data-i="${i}">${t}</button>`).join('')}</div><div id="fb" class="cap"></div>`;
- const fb=$('#fb'),done=good=>{if(good)score++;$$('#quiz .opts button').forEach(b=>b.disabled=true);fb.innerHTML=(good?`<span class="te">✓ ${q.ok}</span>`:`<span style="color:var(--rd)">✗ Not quite.${q.seq?' Correct order: '+q.seq.join(' → '):''}</span>`)+' <button id="qn" class="pri">Next ›</button>';$('#qn').onclick=()=>{qi++;renderQ()}};
- $$('#quiz .opts button').forEach(b=>b.onclick=()=>{
-  if(q.seq){const t=b.textContent;picked.push(t);if(t!==q.seq[picked.length-1]){b.classList.add('wrong');return done(false)}b.disabled=true;b.classList.add('right');fb.textContent='So far: '+picked.join(' → ');if(picked.length===3)done(true)}
-  else{const good=+b.dataset.i===q.a;b.classList.add(good?'right':'wrong');if(!good)$$('#quiz .opts button')[q.a].classList.add('right');done(good)}})}
 go(0);
 </script></body></html>
