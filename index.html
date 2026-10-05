@@ -48,15 +48,25 @@ button.on{border-color:var(--te);background:#12302f}
 .blocks{padding-top:1.8rem}.blocks .cell,#bsC .cell{animation:none}.blocks .cell{min-width:4rem;height:4rem;font-size:2rem}
 .blocks .cell.mv{animation:drop .5s both}.blocks.dv .blk{animation:split .5s both}
 @keyframes drop{from{opacity:0;transform:translateY(-2.5rem) scale(1.2)}}@keyframes split{from{opacity:.2;transform:scale(.85)}}
-.trk{display:flex;gap:.8rem;justify-content:center}.trk span{padding:.5rem 1.3rem;border:2px solid var(--bd);border-radius:2rem;font-weight:800;font-size:1.3rem;color:var(--mu);transition:.3s}
-.trk span.on{border-color:var(--am);color:#1a1200;background:var(--am)}.trk span.done{border-color:var(--te);color:var(--te)}
+.trk{display:flex;gap:.8rem;justify-content:center}.trk button{padding:.5rem 1.3rem;border:2px solid var(--bd);border-radius:2rem;font-weight:800;font-size:1.3rem;color:var(--mu);transition:.3s}
+.trk button.on{border-color:var(--am);color:#1a1200;background:var(--am)}.trk button.done{border-color:var(--te);color:var(--te)}
 .right{border-color:var(--te)!important;background:#12302f}.wrong{border-color:var(--rd)!important}button:disabled{cursor:default;color:var(--tx)}.pill{font-weight:800;font-size:1.4rem;color:var(--am)}
 .checks{display:flex;gap:1.5rem;font-size:1.3rem;font-weight:700;color:var(--te);visibility:hidden}.checks.show{visibility:visible}
 /* code */
 pre{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:1.15rem;line-height:1.7;background:var(--card);border:1px solid var(--bd);border-radius:.9rem;padding:1.1rem 0}
 .ln{padding:0 1.3rem;border-left:4px solid transparent;transition:.3s;white-space:pre}.ln.hl{background:#3a2a0a;border-color:var(--am)}
 .k{color:#c79bff}.f{color:var(--te)}.c{color:var(--mu)}
-.viz{font-size:1.4rem;font-family:ui-monospace,Menlo,monospace;min-height:5.5rem}.gone{display:none!important}.stack{display:flex;flex-direction:column;gap:1rem}.ms{display:flex;flex-direction:column;gap:1rem}.cp{font-size:.95rem;line-height:1.5;padding:.7rem 0;max-height:26rem;overflow:auto}table{border-collapse:collapse;font-size:1.3rem}td,th{padding:.55rem 1.2rem;border-bottom:1px solid var(--bd);text-align:left}th{color:var(--am)}
+.viz{font-size:1.4rem;font-family:ui-monospace,Menlo,monospace;min-height:5.5rem}.gone{display:none!important}.col{display:flex;flex-direction:column;align-items:center}
+.tree.bs .cell{min-width:3.2rem;height:3.2rem;font-size:1.6rem}.tree.bs .ptr{min-width:0;font-size:1rem}.tn.on{border:2px solid var(--am)}.tn.cut{opacity:.35}.slide.tight{padding-top:2.5rem;gap:.6rem}
+.tree{display:flex;flex-direction:column;min-height:6rem}.tr{display:flex}.slot{flex:1;display:flex;justify-content:center;position:relative}
+.tr+.tr .slot{padding-top:.9rem}.tr+.tr .slot::before{content:'';position:absolute;top:0;left:50%;height:.9rem;border-left:2px solid var(--bd)}
+.tr+.tr .slot:nth-child(odd)::after{content:'';position:absolute;top:0;left:50%;width:50%;border-top:2px solid var(--bd)}
+.tr+.tr .slot:nth-child(even)::after{content:'';position:absolute;top:0;left:0;width:50%;border-top:2px solid var(--bd)}
+.tn{display:flex;gap:.3rem;padding:.3rem;border:2px dashed var(--bd);border-radius:.7rem;position:relative;background:var(--bg);height:fit-content}
+.tn.par::after{content:'';position:absolute;left:50%;top:100%;height:.9rem;border-left:2px solid var(--bd)}
+.tn.ok{border:2px solid #2b6b63}.tn.out{border:2px solid var(--am)}
+.tree .cell{min-width:2.6rem;height:2.6rem;font-size:1.4rem;animation:none}.tree .cell.gh{opacity:.25;border-style:dashed}
+.tree .cell.mv{animation:drop .5s both}.tree.dv .tr:last-child .tn{animation:split .5s both}.trk button{cursor:pointer}.stack{display:flex;flex-direction:column;gap:1rem}.ms{display:flex;flex-direction:column;gap:1rem}.cp{font-size:.95rem;line-height:1.5;padding:.7rem 0;max-height:26rem;overflow:auto}table{border-collapse:collapse;font-size:1.3rem}td,th{padding:.55rem 1.2rem;border-bottom:1px solid var(--bd);text-align:left}th{color:var(--am)}
 /* quiz */
 .opts{display:flex;gap:.7rem;flex-wrap:wrap}.opts button{font-size:1.15rem}
 .alg{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center}
@@ -99,29 +109,26 @@ pre{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:1.15rem;line-hei
 <h3 id="w3" class="am" style="text-align:center">BIG + COMPLEX: 1 problem of 16 pieces</h3>
 <p class="mu" style="text-align:center">The goal is not to make more problems. The goal is to make one difficult problem easier to manage.</p></section>
 
-<section class="slide" aria-label="Slide 4"><p class="sub">Where do we actually use it?</p><h2>LeetCode 704: Binary Search</h2><p class="mu" style="font-size:1.3rem">Sorted nums = [-1, 0, 3, 5, 9, 12], target = 9. Return its index, or -1. Expected: 4</p><div id="bsGate"><p style="font-size:1.6rem;margin-bottom:.6rem">How would you find 9?</p><div class="row"><button data-g="A">A: Check every element</button><button data-g="B">B: Use the sorted order</button></div><p class="cap" id="gMsg"></p></div>
-<div id="bsBody" class="stack gone"><div><div class="cells" id="bsC"></div><div class="cells" id="bsP"></div><p class="mu" style="font-size:1.1rem;margin-top:.3rem">L = left end, M = middle, R = right end</p></div>
+<section class="slide" aria-label="Slide 4"><h2>LeetCode 704: Binary Search</h2><p class="mu" style="font-size:1.3rem">Sorted nums = [-1, 0, 3, 5, 9, 12], target = 9. Return its index, or -1. Expected: 4</p><div id="bsGate"><p style="font-size:1.6rem;margin-bottom:.6rem">How would you find 9?</p><div class="row"><button data-g="A">A: Check every element</button><button data-g="B">B: Use the sorted order</button></div><p class="cap" id="gMsg"></p></div>
+<div id="bsBody" class="stack gone"><div class="tree bs" id="bsT"></div><p class="mu" style="font-size:1.1rem">L = left end, M = middle, R = right end. Each Next Step grows the tree downward.</p>
 <div class="cap" id="bsCap"></div>
 <div class="row"><button id="bsB">← Previous</button><button id="bsN" class="pri">▶ Next Step</button><button id="bsA">▶ Auto Run</button><button id="bsR">↺ Restart</button>
 <span class="mu" id="bsS" style="margin-left:1rem"></span></div>
 </div></section>
 
 <section class="slide" aria-label="LeetCode 704 code"><h2>704: the code, line by line</h2><div class="cols"><pre class="cp" data-code="704"></pre><div><div class="row"><button data-c="m">mid</button><button data-c="f">== target</button><button data-c="c">&lt; target</button><button data-c="u">left = mid + 1</button></div><div class="card viz" style="margin:1rem 0">Pick a line to see what it does.</div><div class="card"><div class="row"><span class="chip">6 elements</span>↓<span class="chip">3</span>↓<span class="chip">1</span></div><p style="margin-top:.6rem">Time <b class="am">O(log n)</b> &nbsp; Space <b class="am">O(1)</b></p><p class="mu">Every step removes about half of the remaining elements.</p></div></div></div></section>
-<section class="slide" aria-label="Merge sort demo"><p class="sub">Divide &amp; Conquer in action</p><h2>Merge Sort on 8 numbers</h2><div class="ms" data-arr="8,3,5,4,7,6,1,2"></div></section>
+<section class="slide" aria-label="Merge sort demo"><h2>Merge Sort on 8 numbers</h2><div class="ms" data-arr="8,3,5,4,7,6,1,2"></div></section>
 <section class="slide" aria-label="LeetCode 912"><p class="sub">LeetCode 912: Sort an Array</p><h2>[5, 2, 3, 1] → [1, 2, 3, 5]</h2><p class="mu" style="font-size:1.4rem">How can we sort this using Divide &amp; Conquer? Press Next and watch.</p><div class="ms" data-arr="5,2,3,1"></div></section>
 <section class="slide" aria-label="Your turn"><h2>Your turn: merge [2, 5] and [1, 3]</h2><div id="game" class="stack"></div></section>
 
 <section class="slide" aria-label="LeetCode 912 code"><h2>912: code ↔ Divide, Conquer, Combine</h2><div class="cols"><div><pre class="cp" data-code="912"></pre><button id="mgT" style="margin-top:.6rem">Show merge()</button></div><div><div class="row"><button data-c="d">DIVIDE</button><button data-c="s">CONQUER</button><button data-c="m">COMBINE</button></div><div class="card viz" style="margin:1rem 0">Pick a stage to light up its code.</div><div class="card"><div class="row"><span class="chip">log n levels</span>×<span class="chip">n work per level</span>=<span class="chip am">O(n log n)</span></div><p style="margin-top:.6rem">Space <b class="am">O(n)</b></p><p class="mu">The array splits for about log n levels, and each level processes about n elements.</p></div></div></div></section>
 <section class="slide" aria-label="Comparison"><h2>Two problems, one idea</h2><table><tr><th></th><th>Binary Search</th><th>Merge Sort</th></tr><tr><td>LeetCode</td><td>704</td><td>912</td></tr><tr><td>Purpose</td><td>Search</td><td>Sort</td></tr><tr><td>Main idea</td><td>Remove half</td><td>Divide + merge</td></tr><tr><td>Time</td><td>O(log n)</td><td>O(n log n)</td></tr><tr><td>Divide</td><td>Search space</td><td>Array</td></tr><tr><td>Combine</td><td>Not required in the same way</td><td>Required</td></tr></table><div class="row"><button id="cmpB" class="pri">What is common between these two problems?</button></div><h3 id="cmpA" class="te"></h3></section>
 
-<section class="slide" aria-label="Slide 7"><h2>Can YOU identify Divide &amp; Conquer?</h2>
-<div class="card" id="quiz"></div>
-<div><h3 class="mu" style="margin-bottom:.5rem">Common Divide &amp; Conquer algorithms (click one)</h3><div class="alg" id="alg"></div><p id="algT" class="te" style="min-height:1.6rem;margin-top:.5rem"></p></div></section>
 </main>
 
 <div id="notes" role="note"></div>
 <div id="hud"><div class="row"><button id="prev" aria-label="Previous slide">↑</button><button id="next" aria-label="Next slide">↓</button><span id="ctr" class="mu"></span></div>
-<div class="row"><button id="nb" aria-label="Presenter notes">Notes (P)</button><button id="fs" aria-label="Toggle fullscreen">⛶ Fullscreen (F)</button></div></div>
+<div class="row"><button id="fs" aria-label="Toggle fullscreen">⛶ Fullscreen (F)</button></div></div>
 
 <script>
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
@@ -154,7 +161,6 @@ addEventListener('keydown',e=>{const k=e.key;
  else if(k==='ArrowRight')go(cur+1);else if(k==='ArrowLeft')go(cur-1);else if(k==='n'||k==='N'){const r=slides[cur].querySelector('.ms');if(r)$('.nx',r).click();else if(cur===3)$('#bsN').click()}else if(k==='b'||k==='B'){const r=slides[cur].querySelector('.ms');if(r)$('.pv',r).click();else if(cur===3)$('#bsB').click()}else if(k==='Home')go(0);else if(k==='End')go(slides.length-1);else if(k==='f'||k==='F')toggleFS();else if(k==='p'||k==='P')$('#notes').classList.toggle('show');});
 addEventListener('wheel',e=>{if(lock||Math.abs(e.deltaY)<20)return;lock=true;go(cur+Math.sign(e.deltaY));setTimeout(()=>lock=false,800)},{passive:true});
 let ty=0;addEventListener('touchstart',e=>ty=e.touches[0].clientY);addEventListener('touchend',e=>{const d=ty-e.changedTouches[0].clientY;if(Math.abs(d)>60)go(cur+Math.sign(d))});
-$('#nb').onclick=()=>$('#notes').classList.toggle('show');
 
 // ===== Fullscreen =====
 function toggleFS(){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen()}
@@ -181,48 +187,50 @@ function mode(dc){bl.classList.toggle('dc',dc);$('#t1').classList.toggle('on',!d
 $('#t1').onclick=()=>mode(false);$('#t2').onclick=()=>mode(true);
 
 // ===== Binary Search Visualization =====
-const BA=[-1,0,3,5,9,12],BS=[
-{L:0,R:5,M:2,t:'Middle is 3. Is 3 the target 9?',s:'6 elements'},
-{L:0,R:5,M:2,cut:2,t:'3 < 9, so 9 must be on the right. Drop the left half.',s:'6 → 3 elements'},
-{L:3,R:5,M:4,t:'Middle is 9. 9 == 9',s:'6 → 3 → 1 element'},
-{L:3,R:5,M:4,f:1,t:'FOUND! 9 is at index 4.',s:'6 → 3 → 1 element'}];
+const BA=[-1,0,3,5,9,12],BN=(a,c,m=-1,l=-1,r=-1,f=0)=>({a,c,m,l,r,f}),CUT=()=>BN([-1,0,3],'cut');
+$('#bsGate').closest('.slide').classList.add('tight');
+const BS=[
+{rows:[[BN(BA,'on',2,0,5)]],L:0,R:5,M:2,t:'Middle is 3. Is 3 the target 9?',s:'6 elements'},
+{rows:[[BN(BA,'on',2,0,5)],[CUT(),BN([5,9,12],'on')]],L:0,R:5,M:2,t:'3 < 9, so 9 must be on the right. Drop the left half.',s:'6 → 3 elements'},
+{rows:[[BN(BA,'past',2)],[CUT(),BN([5,9,12],'on',1,0,2)]],L:3,R:5,M:4,t:'Middle is 9. 9 == 9',s:'6 → 3 → 1 element'},
+{rows:[[BN(BA,'past',2)],[CUT(),BN([5,9,12],'on',1,0,2,1)]],L:3,R:5,M:4,t:'FOUND! 9 is at index 4.',s:'6 → 3 → 1 element',f:1}];
 let bi=0,bTimer=null;
-function renderBS(){const s=BS[bi],c=$('#bsC');if(!c.children.length){c.innerHTML=BA.map(v=>`<span class="cell">${v}</span>`).join('');$('#bsP').innerHTML=BA.map(()=>'<span class="ptr"></span>').join('')}
- [...c.children].forEach((e,i)=>{e.className='cell'+(i<s.L||i>s.R||i<=(s.cut??-1)?' dim':'')+(i===s.M?(s.f?' fnd':' mid'):'')});
- [...$('#bsP').children].forEach((e,i)=>e.textContent=[i===s.L?'L':'',i===s.M?'M':'',i===s.R?'R':''].filter(Boolean).join('/'));
- $('#bsCap').textContent=s.t+'   (L='+s.L+', M='+s.M+', R='+s.R+')';$('#bsCap').style.color=s.f?'var(--te)':'';$('#bsS').textContent='STEP '+(bi+1)+' / 4, search space: '+s.s;$('#bsN').textContent=bi===BS.length-1?'↺ Restart':'▶ Next Step';}
+function renderBS(){const s=BS[bi],t=$('#bsT');t.classList.toggle('dv',bi===1);
+ t.innerHTML=s.rows.map((row,d)=>`<div class="tr">${row.map(n=>`<div class="slot"><div class="tn ${n.c} ${d+1<s.rows.length?'par':''}">${n.a.map((v,j)=>`<span class="col"><span class="cell ${j===n.m?(n.f?'fnd':'mid'):''}">${v}</span><span class="ptr">${[j===n.l?'L':'',j===n.m&&n.c==='on'?'M':'',j===n.r?'R':''].filter(Boolean).join('/')}</span></span>`).join('')}</div></div>`).join('')}</div>`).join('');
+ $('#bsCap').textContent=s.t+'   (L='+s.L+', M='+s.M+', R='+s.R+')';$('#bsCap').style.color=s.f?'var(--te)':'';
+ $('#bsS').textContent='STEP '+(bi+1)+' / 4, search space: '+s.s;$('#bsN').textContent=bi===BS.length-1?'↺ Restart':'▶ Next Step';}
 function bsNext(){if(bi<BS.length-1){bi++;renderBS()}else stopBS()}
 function stopBS(){clearInterval(bTimer);bTimer=null;$('#bsA').textContent='▶ Auto Run'}
 $('#bsN').onclick=()=>{stopBS();if(bi===BS.length-1){bi=0;renderBS()}else bsNext()};$('#bsB').onclick=()=>{stopBS();if(bi>0){bi--;renderBS()}};$('#bsR').onclick=()=>{stopBS();bi=0;renderBS()};
 $('#bsA').onclick=()=>{if(bTimer)return stopBS();if(bi===BS.length-1)bi=0;renderBS();$('#bsA').textContent='⏸ Pause';bTimer=setInterval(bsNext,1400)};
 renderBS();
 
-// ===== Merge Sort Visualization (reusable for any power-of-two array) =====
-const B=(a,c='',h=[],l='')=>({a,c,h,l});
-function buildMS(arr){const S=[];let g=[arr.slice()];
- S.push({p:1,b:[B(g[0])],t:'Start with the whole array. Divide it into smaller arrays.'});
- while(g.some(x=>x.length>1)){g=g.flatMap(x=>{const m=x.length>>1;return x.length>1?[x.slice(0,m),x.slice(m)]:[x]});S.push({p:1,b:g.map(a=>B(a)),t:'DIVIDE: split every group in half.'})}
- S.push({p:1,b:g.map(a=>B(a,'ok')),t:'CONQUER: a single element is already sorted. Nothing left to solve.'});
- while(g.length>1){const n=[];
-  for(let i=0;i<g.length;i+=2){let L=g[i].slice(),R=g[i+1].slice(),o=[];
-   const view=()=>[...n.map(a=>B(a,'ok')),...(L.length?[B(L,'',[0],'LEFT')]:[]),...(R.length?[B(R,'',[0],'RIGHT')]:[]),B(o,'out',o.length?[o.length-1]:[],'RESULT'),...g.slice(i+2).map(a=>B(a))];
-   while(L.length&&R.length){const a=L[0],b=R[0],m=a<=b?a:b;a<=b?L.shift():R.shift();o.push(m);S.push({p:2,b:view(),t:`COMBINE: ${a} vs ${b} → ${m} is smaller, move ${m} to the result`})}
-   const rest=L.concat(R);if(rest.length){o.push(...rest);L=[];R=[];S.push({p:2,b:view(),t:`Nothing left to compare. Copy ${rest.join(', ')}.`})}
-   n.push(o)}
-  g=n;if(g.length>1)S.push({p:2,b:g.map(a=>B(a,'ok')),t:'Every pair is merged. Next level up.'})}
- S.push({p:3,b:[B(g[0],'ok')],t:'SORTED! Divide, Conquer, Combine.'});return S}
-function sorter(root,arr){const S=buildMS(arr),ms={i:0,timer:null,sp:1},q=x=>$(x,root);
- root.innerHTML=`<div class="pill ph"></div><div class="blocks" aria-live="polite"></div><div class="cap" style="text-align:center"></div><div class="trk" aria-label="Current step"><span>DIVIDE</span><span>CONQUER</span><span>COMBINE</span></div><div class="row"><button class="pv" aria-label="Previous step">⏮ Prev</button><button class="pl pri">▶ Play</button><button class="pa">⏸ Pause</button><button class="nx" aria-label="Next step">⏭ Next</button><button class="rs">↺ Restart</button><span class="mu">Speed</span><button data-sp="2">0.5x</button><button data-sp="1" class="on">1x</button><button data-sp=".5">2x</button><b class="sn" style="margin-left:auto"></b></div>`;
- function render(){const s=S[ms.i],box=q('.blocks');box.classList.toggle('dv',s.p===1);
-  box.innerHTML=s.b.map(b=>`<div class="blk ${b.c}">${b.l?`<span class="lb">${b.l}</span>`:''}${b.a.length?b.a.map((v,j)=>`<span class="cell ${b.h.includes(j)?'hl':''} ${b.c==='out'&&j===b.a.length-1?'mv':''}">${v}</span>`).join(''):'<span class="cell" style="opacity:.3">?</span>'}</div>`).join('');
-  q('.ph').textContent=['','PHASE 1: DIVIDE','PHASE 2: CONQUER & COMBINE','SORTED!'][s.p];q('.cap').textContent=s.t;q('.sn').textContent=`Step ${ms.i+1} / ${S.length}`;q('.pl').classList.toggle('pri',!ms.timer);
-  const k=s.p===3?3:s.p===2?2:(s.b[0].c==='ok'?1:0);$$('.trk span',root).forEach((e,i)=>{e.className=i<k?'done':i===k?'on':''})}
+// ===== Merge Sort Visualization: tree (power-of-two arrays) =====
+function buildMS(arr){const lv=[[arr.slice()]];
+ while(lv[lv.length-1][0].length>1)lv.push(lv[lv.length-1].flatMap(x=>{const m=x.length>>1;return[x.slice(0,m),x.slice(m)]}));
+ const D=lv.length,N=lv.map(r=>r.map(a=>({a:a.slice(),c:'',dim:0,hl:-1,gh:0}))),S=[],snap=(rev,k,t)=>S.push({rev,k,t,N:JSON.parse(JSON.stringify(N))});
+ snap(1,0,'Start with the whole array. Click DIVIDE (or Next) to split it.');
+ for(let d=1;d<D;d++)snap(d+1,0,'DIVIDE: split every group in half.');
+ N[D-1].forEach(n=>n.c='ok');snap(D,1,'CONQUER: a single element is already sorted. Nothing left to solve.');
+ for(let d=D-2;d>=0;d--)N[d].forEach((P,i)=>{const A=N[d+1][2*i],Bn=N[d+1][2*i+1],L=A.a.slice(),R=Bn.a.slice(),tot=P.a.length;let x=0,y=0;P.a=[];P.c='out';
+  const upd=m=>{A.dim=x;A.hl=x<L.length?x:-1;Bn.dim=y;Bn.hl=y<R.length?y:-1;P.hl=P.a.length-1;P.gh=tot-P.a.length;snap(D,2,m)};
+  while(x<L.length&&y<R.length){const a=L[x],b=R[y],m=a<=b?a:b;a<=b?x++:y++;P.a.push(m);upd(`COMBINE: ${a} vs ${b} → ${m} is smaller, move ${m} up to the result`)}
+  const rest=L.slice(x).concat(R.slice(y));if(rest.length){P.a.push(...rest);x=L.length;y=R.length;upd(`Nothing left to compare. Copy ${rest.join(', ')} up.`)}
+  P.c='ok';P.hl=-1;P.gh=0;A.c=Bn.c='ok';A.dim=Bn.dim=0;A.hl=Bn.hl=-1});
+ snap(D,3,'SORTED! Divide, Conquer, Combine.');return S}
+function sorter(root,arr){const S=buildMS(arr),ms={i:0,timer:null,sp:1},q=x=>$(x,root),first=[1,S.findIndex(s=>s.k===1),S.findIndex(s=>s.k===2)];
+ root.innerHTML=`<div class="tree" aria-live="polite"></div><div class="cap" style="text-align:center"></div><div class="trk"><button>DIVIDE</button><button>CONQUER</button><button>COMBINE</button></div><div class="row"><button class="pv" aria-label="Previous step">⏮ Prev</button><button class="pl pri">▶ Play</button><button class="pa">⏸ Pause</button><button class="nx" aria-label="Next step">⏭ Next</button><button class="rs">↺ Restart</button><span class="mu">Speed</span><button data-sp="2">0.5x</button><button data-sp="1" class="on">1x</button><button data-sp=".5">2x</button><b class="sn" style="margin-left:auto"></b></div>`;
+ function render(){const s=S[ms.i],t=q('.tree');t.classList.toggle('dv',s.k===0&&s.rev>1);
+  t.innerHTML=s.N.slice(0,s.rev).map((row,d)=>`<div class="tr">${row.map(n=>`<div class="slot"><div class="tn ${n.c} ${d+1<s.rev?'par':''}">${n.a.map((v,j)=>`<span class="cell ${j===n.hl?'hl':''} ${j<n.dim?'dim':''} ${n.c==='out'&&j===n.a.length-1?'mv':''}">${v}</span>`).join('')}${'<span class="cell gh"></span>'.repeat(n.gh)}</div></div>`).join('')}</div>`).join('');
+  q('.cap').textContent=s.t;q('.sn').textContent=`Step ${ms.i+1} / ${S.length}`;q('.pl').classList.toggle('pri',!ms.timer);
+  $$('.trk button',root).forEach((e,i)=>{e.className=i<s.k?'done':i===s.k?'on':''})}
  const stop=()=>{clearTimeout(ms.timer);ms.timer=null;render()};
  function tick(){if(ms.i<S.length-1){ms.i++;render();ms.timer=setTimeout(tick,1400*ms.sp)}else stop()}
  q('.pl').onclick=()=>{if(ms.timer)return;if(ms.i>=S.length-1)ms.i=0;ms.timer=setTimeout(tick,200);render()};
  q('.pa').onclick=stop;q('.nx').onclick=()=>{stop();if(ms.i<S.length-1)ms.i++;render()};q('.pv').onclick=()=>{stop();if(ms.i>0)ms.i--;render()};q('.rs').onclick=()=>{stop();ms.i=0;render()};
+ $$('.trk button',root).forEach((b,k)=>b.onclick=()=>{stop();const c=S[ms.i].k;if(c===k){if(ms.i<S.length-1&&S[ms.i+1].k===k)ms.i++}else ms.i=first[k];render()});
  $$('[data-sp]',root).forEach(b=>b.onclick=()=>{ms.sp=+b.dataset.sp;$$('[data-sp]',root).forEach(x=>x.classList.toggle('on',x===b))});render()}
-$$('.ms').forEach(r=>sorter(r,r.dataset.arr.split(',').map(Number)));
+$$('.ms').forEach(r=>{r.closest('.slide').classList.add('tight');sorter(r,r.dataset.arr.split(',').map(Number))});
 
 // ===== Merge game (LeetCode 912 combine) =====
 (function(){const root=$('#game');let L,R,o;
@@ -244,7 +252,7 @@ const CODE={704:{lines:[['class Solution {',''],['    public int search(int[] nu
 $$('[data-code]').forEach(pre=>{const root=pre.closest('.slide'),C=CODE[pre.dataset.code];drawCode(pre,C.lines);
  $$('[data-c]',root).forEach(b=>b.onclick=()=>{const k=b.dataset.c;$$('.ln',root).forEach(l=>l.classList.toggle('hl',l.dataset.g===k));$$('[data-c]',root).forEach(x=>x.classList.toggle('on',x===b));$('.viz',root).innerHTML=C.viz[k]})});
 let mOpen=false;$('#mgT').onclick=()=>{mOpen=!mOpen;drawCode($('[data-code="912"]'),mOpen?L912.concat(MRG,[['}','']]):CODE[912].lines);$('#mgT').textContent=mOpen?'Hide merge()':'Show merge()'};
-$$('#bsGate [data-g]').forEach(b=>b.onclick=()=>{const y=b.dataset.g==='B';$('#gMsg').textContent=y?'Because the array is sorted, look at the middle and eliminate half of the search space.':'That works, but it may check all 6 items. Is there something faster?';if(y)$('#bsBody').classList.remove('gone')});
+$$('#bsGate [data-g]').forEach(b=>b.onclick=()=>{const y=b.dataset.g==='B';$('#gMsg').textContent=y?'Because the array is sorted, look at the middle and eliminate half of the search space.':'That works, but it may check all 6 items. Is there something faster?';if(y){$('#bsBody').classList.remove('gone');$$('#bsGate .row,#bsGate>p:first-child').forEach(e=>e.classList.add('gone'))}});
 $('#cmpB').onclick=()=>$('#cmpA').textContent='Both reduce a large problem into smaller problems.';
 
 // ===== Quiz =====
@@ -260,9 +268,5 @@ function renderQ(){const z=$('#quiz');if(qi>=Q.length){z.innerHTML=`<div class="
  $$('#quiz .opts button').forEach(b=>b.onclick=()=>{
   if(q.seq){const t=b.textContent;picked.push(t);if(t!==q.seq[picked.length-1]){b.classList.add('wrong');return done(false)}b.disabled=true;b.classList.add('right');fb.textContent='So far: '+picked.join(' → ');if(picked.length===3)done(true)}
   else{const good=+b.dataset.i===q.a;b.classList.add(good?'right':'wrong');if(!good)$$('#quiz .opts button')[q.a].classList.add('right');done(good)}})}
-renderQ();
-const ALG={'Binary Search':'Halve a sorted list until the target is found.','Merge Sort':'Split, sort the halves, merge them in order.','Quick Sort':'Pick a pivot, split smaller/larger, sort each side.','Maximum Subarray':'Best sum is in the left half, right half, or crossing the middle.','Closest Pair of Points':'Find closest pairs on each side, then check across the dividing line.'};
-$('#alg').innerHTML=Object.keys(ALG).map(k=>`<button>${k}</button>`).join('<span class="mu">→</span>');
-$$('#alg button').forEach(b=>b.onclick=()=>{$$('#alg button').forEach(x=>x.classList.toggle('on',x===b));$('#algT').textContent=ALG[b.textContent]});
 go(0);
 </script></body></html>
