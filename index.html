@@ -116,7 +116,22 @@ pre{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:1.15rem;line-hei
 <section class="slide" aria-label="Merge sort demo"><h2>Merge Sort on 8 numbers</h2><div class="ms" data-arr="8,3,5,4,7,6,1,2"></div></section>
 <section class="slide" aria-label="LeetCode 912 code"><h2>912: code ↔ Divide, Conquer, Combine</h2><div class="cols"><div><pre class="cp" data-code="912"></pre><button id="mgT" style="margin-top:.6rem">Show merge()</button></div><div><div class="row"><button data-c="d">DIVIDE</button><button data-c="s">CONQUER</button><button data-c="m">COMBINE</button></div><div class="card viz" style="margin:1rem 0">Pick a stage to light up its code.</div><div class="card"><div class="row"><span class="chip">log n levels</span>×<span class="chip">n work per level</span>=<span class="chip am">O(n log n)</span></div><p style="margin-top:.6rem">Space <b class="am">O(n)</b></p><p class="mu">The array splits for about log n levels, and each level processes about n elements.</p></div></div></div></section>
 
-<section class="slide" aria-label="Comparison"><h2>Two problems, one idea</h2><table><tr><th></th><th>Merge Sort</th><th>Max Subarray</th></tr><tr><td>LeetCode</td><td>912</td><td>53</td></tr><tr><td>Purpose</td><td>Sort</td><td>Best sum</td></tr><tr><td>Main idea</td><td>Divide + merge</td><td>Left, right or crossing</td></tr><tr><td>Time</td><td>O(n log n)</td><td>O(n log n)</td></tr><tr><td>Divide</td><td>Array</td><td>Array</td></tr><tr><td>Combine</td><td>Merge two sorted halves</td><td>Take the max of three</td></tr></table><div class="row"><button id="cmpB" class="pri">What is common between these two problems?</button></div><h3 id="cmpA" class="te"></h3></section>
+<section class="slide" aria-label="Real life examples"><h2>Where do we see this in real life?</h2>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem">
+<div class="card"><h3 class="am">Dictionary or phone book</h3><p class="mu" style="margin-top:.4rem">Looking for a name? You open the middle, see if you went too far, and throw away half. That is binary search.</p></div>
+<div class="card"><h3 class="am">Sorting big lists</h3><p class="mu" style="margin-top:.4rem">Sorting names, prices or search results. Merge sort splits the list, sorts the small parts, and merges them.</p></div>
+<div class="card"><h3 class="am">Big jobs on many computers</h3><p class="mu" style="margin-top:.4rem">Huge data is cut into pieces, each computer solves one piece, and the answers are combined.</p></div>
+<div class="card"><h3 class="am">Everyday teamwork</h3><p class="mu" style="margin-top:.4rem">Cleaning a big house: each person takes one room, then everyone checks the whole house together.</p></div></div>
+<p class="mu" style="font-size:1.3rem">Same three steps every time: <b class="te">divide, conquer, combine</b>.</p></section>
+
+<section class="slide" aria-label="Recap"><h1>Recap</h1>
+<div class="row" style="flex-direction:column;align-items:stretch;gap:.8rem">
+<div class="card"><b class="am big">DIVIDE</b><p style="font-size:1.4rem">Break the big problem into smaller problems.</p></div>
+<div class="card"><b class="am big">CONQUER</b><p style="font-size:1.4rem">Solve the small problems. They are easy.</p></div>
+<div class="card"><b class="am big">COMBINE</b><p style="font-size:1.4rem">Put the small answers together for the final answer.</p></div></div>
+<h2 class="te">Don't solve the whole problem at once. Break it down.</h2></section>
+
+<section class="slide" aria-label="Thank you" style="align-items:center;text-align:center"><h1>Thank You</h1><p class="sub">Divide. Conquer. Combine.</p><p class="mu" style="font-size:1.4rem">Any questions?</p></section>
 
 </main>
 
@@ -130,7 +145,7 @@ const wait=ms=>new Promise(r=>setTimeout(r,ms));
 
 // ===== Presentation Navigation =====
 // One note per slide, in slide order:
-// 1 hook, 2 three steps, 3 why, 4 LeetCode 53 demo, 5 LeetCode 53 code, 6 merge sort demo, 7 LeetCode 912 code, 8 comparison
+// 1 hook, 2 three steps, 3 why, 4 LeetCode 53 demo, 5 LeetCode 53 code, 6 merge sort demo, 7 LeetCode 912 code, 8 real life, 9 recap, 10 thank you
 const slides=$$('.slide'),NOTES=[
 ["Imagine you have a 1000-piece puzzle. Would you solve all 1000 pieces at once?","Click TRY EVERYTHING, then BREAK IT DOWN to compare.","What would you do?","Break the big problem into smaller problems."],
 ["Three words: divide, conquer, combine.","Click each card to light up its part of the diagram.","Which step do you think is hardest?","DIVIDE → CONQUER → COMBINE."],
@@ -139,7 +154,9 @@ const slides=$$('.slide'),NOTES=[
 ["Same three steps in code.","Click DIVIDE, CONQUER, COMBINE, then Show crossing().","Why do we need the crossing case?","best = max(left, right, crossing): O(n log n)."],
 ["This is the hero example. First we split down to single items, then merge back sorted.","Press Play, or step with Next. Pause anytime.","Why is one element already sorted?","Divide until trivial, then combine in order."],
 ["The merge sort code has the same three parts we just watched.","Click DIVIDE, CONQUER, COMBINE, then Show merge().","Where does the recursion stop?","Code = algorithm = picture."],
-["Compare the two problems.","Click the question to reveal the answer.","What is common between them?","Both reduce a large problem into smaller problems."]];
+["This is not just for exams. You use it in daily life.","Read the four cards one by one.","Where have you split a big job into smaller parts?","Same three steps every time: divide, conquer, combine."],
+["Let's finish with the three words again.","Read DIVIDE, CONQUER, COMBINE. Then say the last line slowly.","Can anyone say the three steps without looking?","Don't solve the whole problem at once. Break it down."],
+["Thank you for listening.","Stay on this slide while taking questions.","Any questions?","Divide. Conquer. Combine."]];
 let cur=0,lock=false;
 const dots=$('#dots');slides.forEach((_,i)=>{const b=document.createElement('button');b.setAttribute('aria-label','Go to slide '+(i+1));b.onclick=()=>go(i);dots.append(b)});
 function go(i){cur=Math.max(0,Math.min(slides.length-1,i));$('#deck').style.transform=`translateY(${-cur*100}vh)`;
@@ -236,6 +253,5 @@ $$('[data-code]').forEach(pre=>{const root=pre.closest('.slide'),C=CODE[pre.data
  $$('[data-c]',root).forEach(b=>b.onclick=()=>{const k=b.dataset.c;$$('.ln',root).forEach(l=>l.classList.toggle('hl',l.dataset.g===k));$$('[data-c]',root).forEach(x=>x.classList.toggle('on',x===b));$('.viz',root).innerHTML=C.viz[k]})});
 function tog(btn,code,base,extra,name){let o=false;$(btn).onclick=()=>{o=!o;drawCode($(`[data-code="${code}"]`),o?base.concat(extra,[['}','']]):CODE[code].lines);$(btn).textContent=(o?'Hide ':'Show ')+name}}
 tog('#mgT',912,L912,MRG,'merge()');tog('#cxT',53,L53,CRS,'crossing()');
-$('#cmpB').onclick=()=>$('#cmpA').textContent='Both reduce a large problem into smaller problems.';
 go(0);
 </script></body></html>
